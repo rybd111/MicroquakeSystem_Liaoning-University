@@ -34,10 +34,10 @@ import visual.view.UIController;
  */
 
 public class Main extends Application {
-
+	
 	@Override
 	public void start(Stage primaryStage) throws IOException {
-
+		
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(Main.class.getResource("view/UI.fxml"));
 //		//获得RootLayout对象
@@ -47,7 +47,7 @@ public class Main extends Application {
 		Tools_DataCommunication.getCommunication().setController(controller);
 		Scene scene = new Scene(root);
 		primaryStage.setScene(scene);
-		primaryStage.setTitle("CS界面-辽宁大学");
+		primaryStage.setTitle("煤矿冲击地压实时智能监测与处理系统");
 //		primaryStage.setMinHeight(914);
 		primaryStage.getIcons()
 				.add(new Image(new FileInputStream(System.getProperty("user.dir") + "\\resource\\lndx.png")));
@@ -112,14 +112,16 @@ public class Main extends Application {
 		new ConfigToParameters();
 		
 		/** 情景配置，共有8中模式，每一种对应一个整形数值，在MainTest类中定义。*/
-		new RunningSceneConfig(MainTest.REMOTE_ONLINE_UNSTORAGE);
+		new RunningSceneConfig(MainTest.REMOTE_ONLINE_STORAGE);
 		
 		/** 输出参数*/
-		String prePath = "I:\\矿山\\矿山数据\\红阳三矿\\20201023\\";
+		String prePath = "I:/矿山/矿山数据/红阳三矿/20210326/";
 		InitialConfig m = new InitialConfig();
+		//离线跑实时波形用
+//		InitialConfig m = new InitialConfig(prePath);
 		
 		/** 输出参数*/
-		printRunningParameters.printAllParameters();
+//		printRunningParameters.printAllParameters();
 //		Tools_DataCommunication.getCommunication().showandcloseMyConsole();
 
 		// 启动JavaFX程序

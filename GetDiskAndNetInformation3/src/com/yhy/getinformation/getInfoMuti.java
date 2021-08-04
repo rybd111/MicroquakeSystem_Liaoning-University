@@ -70,7 +70,7 @@ public class getInfoMuti implements Runnable{
 				tp.setUnused(null);
 				tp.setUsed(null);
 				tp.setTotal(null);
-			}    
+			}
 			else if(information.size()>1&&information.size()<=4){ //if information is not null,it should contains netspeed、unused、used、total
 				tp.setStatus("online");
 				tp.setNetspeed(information.get(0));
