@@ -68,7 +68,7 @@ public class DistributedPanelController {
 					@Override
 					public void run() {
 						// 更新JavaFX的主线程的代码放在此处
-						ArrayList<ArrayList<String>> data = readTxt.getData("Z:/test/hyl/201912");
+						ArrayList<ArrayList<String>> data = readTxt.getData("Z:\\I\\数据集\\矿山分布式测试");
 						String x = null;
 						int y = -1;
 						for (int i = 0; i < data.size(); i++) {

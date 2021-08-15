@@ -69,7 +69,7 @@ public class readTxt {
 	}
 
 	public static void main(String[] args) throws Exception {
-		ArrayList<ArrayList<String>> s = readTxt.getData("Z:/test/hyl/201912");
+		ArrayList<ArrayList<String>> s = readTxt.getData("Z:\\I\\数据集\\矿山分布式测试");
 //		readandwrite.pull(MatchRecords.matcher(data));
 	}
 }

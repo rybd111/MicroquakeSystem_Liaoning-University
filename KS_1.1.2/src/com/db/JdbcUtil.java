@@ -41,7 +41,10 @@ public class JdbcUtil {
 				e.printStackTrace();
 			}
 			//根据不同的模式选用不同的数据库表。
-			if(MainTest.runningModel == 1 || MainTest.runningModel == 5) {
+			if(		MainTest.runningModel == 1 ||
+					MainTest.runningModel == 5 ||
+					MainTest.runningModel == 2 ||
+					MainTest.runningModel == 6) {
 				url = "jdbc:mysql://"+Parameters.SevIP+"?useSSL=false&serverTimezone=UTC";
 				username = "root";
 				password = "root";

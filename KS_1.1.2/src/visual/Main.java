@@ -112,7 +112,8 @@ public class Main extends Application {
 		new ConfigToParameters();
 		
 		/** 情景配置，共有8中模式，每一种对应一个整形数值，在MainTest类中定义。*/
-		new RunningSceneConfig(MainTest.REMOTE_ONLINE_STORAGE);
+		MainTest.runningModel = 7;
+		new RunningSceneConfig(MainTest.runningModel);
 		
 		/** 输出参数*/
 		String prePath = "I:/矿山/矿山数据/红阳三矿/20210326/";
@@ -121,7 +122,7 @@ public class Main extends Application {
 //		InitialConfig m = new InitialConfig(prePath);
 		
 		/** 输出参数*/
-//		printRunningParameters.printAllParameters();
+		printRunningParameters.printAllParameters();
 //		Tools_DataCommunication.getCommunication().showandcloseMyConsole();
 
 		// 启动JavaFX程序
