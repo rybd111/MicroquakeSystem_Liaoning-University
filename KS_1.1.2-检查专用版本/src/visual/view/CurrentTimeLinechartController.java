@@ -102,7 +102,7 @@ public class CurrentTimeLinechartController {
 			f[i] = new chartFrame(null, i);
 		// 6 minutes data per frame
 
-		final KeyFrame frame = new KeyFrame(Duration.millis(1000), (ActionEvent actionEvent) -> {
+		final KeyFrame frame = new KeyFrame(Duration.millis(100), (ActionEvent actionEvent) -> {
 			Date date1 = new Date();
 			for (int i = 0; i < T_seriesZ.size(); i++) {
 				if (MainThread.aDataRec[i].afterVector == null)
@@ -121,7 +121,7 @@ public class CurrentTimeLinechartController {
 				time_seriesZ.getData().add(new XYChart.Data(dateFormat.format(date1), f[0].historyData(count)));
 			}
 
-			count = count + Parameters.FREQUENCY + 200 - 1;
+			count = count + (Parameters.FREQUENCY + 200)/10 - 1;
 			/** 删除坐标 */
 			if (T_seriesZ.size() != 0 && T_seriesZ.get(0).getData().size() > 500) {
 				for (int i = 0; i < T_seriesZ.size(); i++)
