@@ -88,7 +88,7 @@ public class DbExcute {
 						resultSet.getString("xData") + "," + 
 						resultSet.getString("yData") + ","	+ 
 						resultSet.getString("zData"),
-						resultSet.getString("nengliang"), 
+						resultSet.getString("nengliang"),
 						resultSet.getString("quackGrade"),
 						resultSet.getString("parrival"), 
 						resultSet.getString("tensor"),
