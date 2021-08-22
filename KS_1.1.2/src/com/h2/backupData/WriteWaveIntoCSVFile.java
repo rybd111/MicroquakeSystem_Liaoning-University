@@ -137,9 +137,9 @@ public class WriteWaveIntoCSVFile {
 	 */
     @SuppressWarnings("unused")
 	public void writeToCSV(Vector<String>[] totalMotiData, String filePath, int[] line, Sensor[] s1) throws ParseException, IOException {
-    	//删除后再新建一个
-    	File file=new File(filePath);
     	
+		//删除后再新建一个
+    	File file=new File(filePath);
     	if(file.exists()) {
     		System.out.println("文件是否成功删除？"+file.delete());
     		file.createNewFile();

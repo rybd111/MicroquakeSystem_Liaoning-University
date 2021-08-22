@@ -8,7 +8,7 @@ import com.mathworks.toolbox.javabuilder.MWException;
 import DataExchange.Sensor;
 import PSO.pso_locate;
 import ELMdiag.Class1;
-import Energy_matlab.Energy_;
+import Energy.Energy_matlab;
 import mutiThread.MainThread;
 import timelocation.Time_Locate;
 import utils.Data2Object_MATLAB;
@@ -51,7 +51,8 @@ public class QuakeClass
 		
 		//calculate the energy.
 //		sen.setEnergy(EMD(motiPreLa, sen, th));
-		sen.setEnergy(Energy_MATLAB(motiPreLa));
+		
+		sen.setEnergy(Energy_MATLAB(motiPreLa, sen));
 //		sen.setClass1(ELM_MATLAB(motiPreLa));
 	}
 	
@@ -389,7 +390,7 @@ public class QuakeClass
 	 * @throws MWException
 	 * @author Hanlin Zhang.
 	 */
-	public static double Energy_MATLAB(Vector<String> a) throws MWException {
+	public static double Energy_MATLAB(Vector<String> a, Sensor motiSen) throws MWException {
 		String inte[];
 		int channel=5;
 		
@@ -403,8 +404,8 @@ public class QuakeClass
 		}
 		
 		Object aObject=Data2Object_MATLAB.data2Object(a, channel);
-		Energy_ calEnergy = new Energy_();
-		Object energy[] = calEnergy.Energy(1, aObject);
+		Energy_matlab calEnergy = new Energy_matlab();
+		Object energy[] = calEnergy.Energy(1, aObject, Parameters.FREQUENCY+200, motiSen.getlineSeriesNew());
 		
 		return Double.parseDouble(energy[0].toString());
 	}
@@ -436,7 +437,7 @@ public class QuakeClass
 		return Integer.parseInt(c1[0].toString());
 	}
 	
-	public static Sensor PSO(double [][]Info) throws MWException {
+	public static Sensor PSO_MATLAB(double [][]Info) throws MWException {
 		
 		pso_locate p = new pso_locate();
 		Object d = Data2Object_MATLAB.array2Object(Info);

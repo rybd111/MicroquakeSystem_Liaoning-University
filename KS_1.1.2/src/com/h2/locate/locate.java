@@ -48,7 +48,7 @@ public class locate {
 		 		}
 		 		
 				//compute the quake coordination.
-				location_refine = QuakeClass.PSO(coor);
+				location_refine = QuakeClass.PSO_MATLAB(coor);
 				//the locate process probably return a NAN value or a INF value, so when this situation appears, the procedure will skip the current circulation.
 				if(Double.isNaN(location_refine.getx())==false && Double.isInfinite(location_refine.getx()) == false){
 					saveAndcal.setlocation_refine(location_refine);

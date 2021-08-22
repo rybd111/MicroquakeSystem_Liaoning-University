@@ -1,3 +1,7 @@
 clear;
-ch2=load('D:\data\ConstructionData\5moti\ryzwxu 2020-07-11 09-08-08`93.csv');
-E = Energy(ch2(:,7));
+ch2=load('D:\data\ConstructionData\5moti\VUYWS 2021-03-26 09-48-34`92.csv');
+E1 = Energy(ch2(:,7), 5000, 16000);
+E2 = Energy(ch2(:,15), 5000, 16000);
+E3 = Energy(ch2(:,23), 5000, 16000);
+E4 = Energy(ch2(:,31), 5000, 16000);
+E5 = Energy(ch2(:,39), 5000, 16000);

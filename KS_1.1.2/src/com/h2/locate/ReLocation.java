@@ -112,7 +112,7 @@ public class ReLocation {
 	 				coor[i][3]=sensors1[i].getSecTime();
 		 		}
 				Sensor location_refine = new Sensor();
-				location_refine=QuakeClass.PSO(coor);
+				location_refine=QuakeClass.PSO_MATLAB(coor);
 				location_refine.toString();
 				double xdata=Double.parseDouble(nf.format(location_refine.getx()));//事件x坐标
 				double ydata=Double.parseDouble(nf.format(location_refine.gety()));//事件坐标
