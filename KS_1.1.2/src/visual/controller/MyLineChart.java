@@ -375,6 +375,7 @@ public class MyLineChart {
 	private void setSeries() {
 		clearP();
 		double tempt = 0.0;
+		
 		for (int i = 0; i < Tools_DataCommunication.getCommunication().fileSS.length(); i++) {
 
 			tempt = Tools_DataCommunication.getCommunication().chartYmax[i];

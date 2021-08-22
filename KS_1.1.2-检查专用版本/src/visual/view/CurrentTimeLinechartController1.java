@@ -72,9 +72,9 @@ public class CurrentTimeLinechartController {
 		// 创建LineChart表
 		for (int i = 0; i < MainThread.fileStr.length; i++) {
 			T_seriesZ.add(new XYChart.Series<String, Number>());
-			LineChart<String, Number> chart = new LineChart<String, Number>(new CategoryAxis(), new NumberAxis(-2000, 2000, 2000));
+			LineChart<String, Number> chart = new LineChart<String, Number>(new CategoryAxis(), new NumberAxis());
 			// 禁止动画播放
-//			chart.setAnimated(false);
+			chart.setAnimated(false);
 			// 设置LineChart的样式
 			chart.getStylesheets().add(stockLineChartCss);
 			// 设置LineChart锚点
@@ -83,47 +83,51 @@ public class CurrentTimeLinechartController {
 			chart.getData().addAll(T_seriesZ.get(i));
 			mChart_T.add(chart);
 		}
-//		mChart_xAxis.setAnimated(false);
+		mChart_xAxis.setAnimated(false);
 		mChart_xAxis.getStylesheets().add(stockLineChartCss);
 		setXAxisShow(mChart_xAxis);
 		// 把线放入LineChart表中
 		mChart_xAxis.getData().addAll(time_seriesZ);
 		/*** 初始化波形图 */
-		int number=470;
 		Date date = new Date();
 		long tdate = date.getTime();
-		for (int i = 0; i < number; i++) {
+		for (int i = 0; i < 500; i++) {
 			for (int j = 0; j < T_seriesZ.size(); j++)
-				T_seriesZ.get(j).getData().add(new XYChart.Data(dateFormat.format(tdate - (number - i) * 1000), 0));
-			time_seriesZ.getData().add(new XYChart.Data(dateFormat.format(tdate - (number - i) * 1000), 0));
+				T_seriesZ.get(j).getData().add(new XYChart.Data(dateFormat.format(tdate - (500 - i) * 1000), 0));
+			time_seriesZ.getData().add(new XYChart.Data(dateFormat.format(tdate - (500 - i) * 1000), 0));
 		}
 		/** 向波形图中添加数据 */
 		chartFrame[] f = new chartFrame[Parameters.SensorNum];
 		for (int i = 0; i < Parameters.SensorNum; i++)
 			f[i] = new chartFrame(null, i);
 		// 6 minutes data per frame
-		
-		final KeyFrame frame = new KeyFrame(Duration.millis(1000/10), (ActionEvent actionEvent) -> {
+
+		final KeyFrame frame = new KeyFrame(Duration.millis(100), (ActionEvent actionEvent) -> {
 			Date date1 = new Date();
-			for (int i = 0; i < T_seriesZ.size(); i++) { 
+			for (int i = 0; i < T_seriesZ.size(); i++) {
 				if (MainThread.aDataRec[i].afterVector == null)
 					continue;
 				if (count > MainThread.aDataRec[i].afterVector.size())
 					count = 0;
+//				T_seriesZ.get(i).getData()
+//						.add(new XYChart.Data(MainThread.aDataRec[i].afterVector.get(count).split(" ")[6].substring(10),
+//								f[i].historyData(count)));
 				T_seriesZ.get(i).getData().add(new XYChart.Data(dateFormat.format(date1), f[i].historyData(count)));
 			}
 			if (MainThread.aDataRec[0].afterVector != null) {
+//				time_seriesZ.getData()
+//				.add(new XYChart.Data(MainThread.aDataRec[0].afterVector.get(count).split(" ")[6].substring(10),
+//						f[0].historyData(count)));
 				time_seriesZ.getData().add(new XYChart.Data(dateFormat.format(date1), f[0].historyData(count)));
 			}
 
 			count = count + (Parameters.FREQUENCY + 200)/10 - 1;
-//			count++;
 			/** 删除坐标 */
-//			if (T_seriesZ.size() != 0 && T_seriesZ.get(0).getData().size() > number) {
-//				for (int i = 0; i < T_seriesZ.size(); i++)
-//					T_seriesZ.get(i).getData().remove(0);
-//				time_seriesZ.getData().remove(0);
-//			}
+			if (T_seriesZ.size() != 0 && T_seriesZ.get(0).getData().size() > 500) {
+				for (int i = 0; i < T_seriesZ.size(); i++)
+					T_seriesZ.get(i).getData().remove(0);
+				time_seriesZ.getData().remove(0);
+			}
 		});
 
 		animation.getKeyFrames().add(frame);
@@ -362,7 +366,7 @@ public class CurrentTimeLinechartController {
 		anchorpane.setTopAnchor(chart, -20.0);
 		anchorpane.setBottomAnchor(chart, 50.0);
 		anchorpane.setLeftAnchor(chart, 0.0);
-		anchorpane.setRightAnchor(chart, -1.0);
+		anchorpane.setRightAnchor(chart, -10.0);
 		anchorpane.getChildren().addAll(chart);
 	}
 }
