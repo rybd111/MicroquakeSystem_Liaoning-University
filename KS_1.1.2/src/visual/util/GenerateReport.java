@@ -206,7 +206,7 @@ public class GenerateReport {
 		// 表格第四行
 		XWPFTableRow infoTableRowFour = infoTable.createRow();
 		infoTableRowFour.getCell(0).setText("震源深度估计");
-		infoTableRowFour.getCell(1).setText(" z: " + zData);
+		infoTableRowFour.getCell(1).setText(" z: " + zData + "m");
 
 		// 表格第五行
 		XWPFTableRow infoTableRowFive = infoTable.createRow();
