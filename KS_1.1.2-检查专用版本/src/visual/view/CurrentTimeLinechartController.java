@@ -116,7 +116,7 @@ public class CurrentTimeLinechartController {
 				time_seriesZ.getData().add(new XYChart.Data(dateFormat.format(date1), f[0].historyData(count)));
 			}
 
-			count = count + (Parameters.FREQUENCY + 200)/10 - 1;
+			count = count + (Parameters.FREQUENCY + 200)/500 - 1;
 //			count++;
 			/** 删除坐标 */
 //			if (T_seriesZ.size() != 0 && T_seriesZ.get(0).getData().size() > number) {
