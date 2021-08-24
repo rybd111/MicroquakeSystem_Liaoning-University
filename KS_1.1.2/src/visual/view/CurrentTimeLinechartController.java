@@ -102,7 +102,7 @@ public class CurrentTimeLinechartController {
 			f[i] = new chartFrame(null, i);
 		// 6 minutes data per frame
 
-		final KeyFrame frame = new KeyFrame(Duration.millis(1000), (ActionEvent actionEvent) -> {
+		final KeyFrame frame = new KeyFrame(Duration.millis(1000/10), (ActionEvent actionEvent) -> {
 			Date date1 = new Date();
 			for (int i = 0; i < T_seriesZ.size(); i++) {
 				if (MainThread.aDataRec[i].afterVector == null)

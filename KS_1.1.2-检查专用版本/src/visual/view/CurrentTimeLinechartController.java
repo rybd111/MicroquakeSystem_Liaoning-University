@@ -362,7 +362,7 @@ public class CurrentTimeLinechartController {
 		anchorpane.setTopAnchor(chart, -20.0);
 		anchorpane.setBottomAnchor(chart, 50.0);
 		anchorpane.setLeftAnchor(chart, 0.0);
-		anchorpane.setRightAnchor(chart, -1.0);
+		anchorpane.setRightAnchor(chart, -10.0);
 		anchorpane.getChildren().addAll(chart);
 	}
 }
